@@ -16,5 +16,19 @@ const initialState = {
 };
 
 export const carReducer = (state = initialState, action) => {
-  return console.log("hey");
+  switch (action.type) {
+    case "BUY_ITEM":
+      return {
+        ...state,
+        title: action.payload,
+        editing: !state.editing
+      };
+    case "REMOVE_FEATURE":
+      return {
+        ...state,
+        editing: !state.editing
+      };
+    default:
+      return state;
+  }
 };
