@@ -6,9 +6,10 @@ import AdditionalFeatures from "./components/AdditionalFeatures";
 import Total from "./components/Total";
 
 import { connect } from "react-redux";
-import { buyItem, removeFeature } from "./auctions/index";
+import { removeFeature, buyItem } from "./actions/index";
 
 const App = ({ buyItem, removeFeature, store, car, additionalPrice }) => {
+  console.log("app store: ", store);
   const deleteFeature = item => {
     removeFeature(item);
   };
@@ -20,10 +21,10 @@ const App = ({ buyItem, removeFeature, store, car, additionalPrice }) => {
     <div className="boxes">
       <div className="box">
         <Header car={car} />
-        <AddedFeatures car={car} />
+        <AddedFeatures car={car} remove={deleteFeature} />
       </div>
       <div className="box">
-        <AdditionalFeatures store={store} />
+        <AdditionalFeatures store={store} add={buyIt} />
         <Total car={car} additionalPrice={additionalPrice} />
       </div>
     </div>
